@@ -1,0 +1,9 @@
+/* Reset default CRA styles */
+
+* {
+  box-sizing: border-box;
+}
+
+.App {
+  width: 100%;
+}

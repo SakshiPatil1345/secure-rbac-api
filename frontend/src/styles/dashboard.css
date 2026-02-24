@@ -1,0 +1,158 @@
+.dashboard-container {
+  padding: 40px;
+  background-color: #f3f4f6;
+  min-height: 100vh;
+}
+
+.dashboard-title {
+  font-size: 28px;
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+
+/* Form Section */
+.task-form {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.task-input {
+  width: 400px;        /* increased width */
+  padding: 12px 15px;  /* bigger text area */
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.task-input:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+/* Buttons */
+.add-btn {
+  width: 120px; 
+  padding: 12px 20px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.add-btn:hover {
+  background-color: #1e40af;
+}
+
+.delete-btn {
+  padding: 6px 12px;
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background-color: #dc2626;
+}
+
+/* Task Cards */
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.task-card {
+  background: white;
+  padding: 15px 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.task-title {
+  font-size: 16px;
+}
+
+/* Action Buttons Container */
+.task-card button {
+  padding: 6px 14px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+/* Update Button */
+.update-btn {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.update-btn:hover {
+  background-color: #2563eb;
+  transform: translateY(-1px);
+}
+
+/* Save Button */
+.save-btn {
+  background-color: #22c55e;
+  color: white;
+}
+
+.save-btn:hover {
+  background-color: #16a34a;
+  transform: translateY(-1px);
+}
+
+/* Cancel Button */
+.cancel-btn {
+  background-color: #9ca3af;
+  color: white;
+}
+
+.cancel-btn:hover {
+  background-color: #6b7280;
+}
+
+/* Delete Button */
+.delete-btn {
+  background-color: #ef4444;
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: #dc2626;
+  transform: translateY(-1px);
+}
+.task-form {
+  display: flex;
+  flex-direction: column;   /* 👈 makes it vertical */
+  gap: 15px;
+  max-width: 600px;
+}
+
+.auto-textarea {
+  min-height: 120px;     /* starts bigger */
+  resize: none;          /* prevent manual drag */
+  overflow-y: auto;      /* scroll when too big */
+}
+
+.admin-section {
+  margin-top: 40px;
+}
+
+.admin-user-card {
+  background: white;
+  padding: 15px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
