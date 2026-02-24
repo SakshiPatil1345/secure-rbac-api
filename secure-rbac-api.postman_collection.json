@@ -1,0 +1,326 @@
+{
+  "info": {
+    "_postman_id": "9b8217ef-0105-4dd9-b2b8-a127941b1ce6",
+    "name": "secure rbac",
+    "description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "52659170",
+    "_collection_link": "https://go.postman.co/collection/52659170-9b8217ef-0105-4dd9-b2b8-a127941b1ce6?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"user2\",\n    \"email\": \"user2@gmail.com\",\n    \"password\": \"user2123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/v1/auth/register",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "register"
+              ]
+            },
+            "description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+          },
+          "response": []
+        },
+        {
+          "name": "Login",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"user2@gmail.com\",\r\n    \"password\": \"user2123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/v1/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Admin access(all user)",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTlkYTY1NGQwMTRiMjI2ZTUzNzc5ZDIiLCJpYXQiOjE3NzE5NDgwODAsImV4cCI6MTc3MjAzNDQ4MH0.4WH-lRGbtanLPUoljm79Itb66x-Ic7Gcv37y6dmQbMM",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"Complete Backend RBAC Implementation\",\r\n  \"description\": \"Implement JWT authentication and role-based access control for user and admin roles.\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/v1/users",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v1",
+                "users"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Admin access(all tasks)",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTlkYTY1NGQwMTRiMjI2ZTUzNzc5ZDIiLCJpYXQiOjE3NzE5NDgwODAsImV4cCI6MTc3MjAzNDQ4MH0.4WH-lRGbtanLPUoljm79Itb66x-Ic7Gcv37y6dmQbMM",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"Complete Backend RBAC Implementation\",\r\n  \"description\": \"Implement JWT authentication and role-based access control for user and admin roles.\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/v1/tasks",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v1",
+                "tasks"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Tasks",
+      "item": [
+        {
+          "name": "Fetch Task",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTlkYWMzM2QwMTRiMjI2ZTUzNzc5ZGMiLCJpYXQiOjE3NzE5NDY4OTMsImV4cCI6MTc3MjAzMzI5M30.eXDMm-AkivhnT4HDsPmVopl4srfQuVA1BQ1rZL22ItI",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/v1/tasks",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v1",
+                "tasks"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Task",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTlkYWMzM2QwMTRiMjI2ZTUzNzc5ZGMiLCJpYXQiOjE3NzE5NDYxODYsImV4cCI6MTc3MjAzMjU4Nn0.lNIqhC79JTKPk0ydcl4gydSrGKjcbbnKpWbTtRH1fwo",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"Complete Backend RBAC Implementation\",\r\n  \"description\": \"Implement JWT authentication and role-based access control for user and admin roles.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/v1/tasks",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v1",
+                "tasks"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Task",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTlkYWMzM2QwMTRiMjI2ZTUzNzc5ZGMiLCJpYXQiOjE3NzE5NDczNDQsImV4cCI6MTc3MjAzMzc0NH0._pCZj1SP-MkEuVIaIQi07ayMskyigvY4SHGnIZJ7faw",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"Complete Backend RBAC Implementation\",\r\n  \"description\": \"Implement JWT authentication and role-based access control for user and admin roles. Also add simple UI.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/v1/tasks/699dc1e1a73cf2004d1a6b8e",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v1",
+                "tasks",
+                "699dc1e1a73cf2004d1a6b8e"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Task",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTlkYWMzM2QwMTRiMjI2ZTUzNzc5ZGMiLCJpYXQiOjE3NzE5NDg2ODQsImV4cCI6MTc3MjAzNTA4NH0.lvEG7DTTz2ywD6Z4H1razZ3P4rfSQTK0-TkCc5ZhH40",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"Complete Backend RBAC Implementation\",\r\n  \"description\": \"Implement JWT authentication and role-based access control for user and admin roles. Also add simple UI.\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/v1/tasks/699dc1e1a73cf2004d1a6b8e",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v1",
+                "tasks",
+                "699dc1e1a73cf2004d1a6b8e"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
